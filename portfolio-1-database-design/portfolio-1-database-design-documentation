@@ -1,0 +1,208 @@
+# Portfolio 1 – Database Design
+
+## Project Title
+KiloPay Ltd Database
+
+## Objective
+To design and implement a relational database system using PostgreSQL. The objectives are broken down into:
+
+1.  Design a structured relational database for a financial transaction system.
+2.  Identify the major entities, attributes, and relationships within the system.
+3.  Develop an Entity Relationship Diagram (ERD).
+4.  Apply database normalization principles to reduce data redundancy.
+5.  Implement the database using PostgreSQL.
+6.  Define appropriate primary keys and foreign keys.
+7.  Establish referential integrity between related tables.
+8.  Populate the database with realistic sample data.
+9.  Execute SQL queries to demonstrate that the database functions correctly.
+10.  Provide screenshots and other evidence of the completed work.
+
+## Database
+KiloPay
+
+## DBMS
+PostgreSQL
+
+## Users
+1.  Customers
+2.  Customer service officers
+3.  Finance officers
+4.  System administrators
+5.  Compliance officers
+
+## Database Entities
+KiloPay Ltd database is made up of the underlisted principal entites:
+
+1.  CUSTOMER
+2.  BANK
+3.  ACCOUNT
+4.  BENEFICIARY
+5.  FINANCIAL_TRANSACTION
+6.  USER_ACCOUNTSACTION
+7.  AUDIT_LOG
+
+### CUSTOMER
+Stores information about KiloPay customers. Key attributes include:
+
+customer_id – Primary Key
+first_name
+last_name
+email
+phone
+date_of_birth
+address
+registration_date
+status
+
+### BANK
+Stores information about banks associated with customer accounts and beneficiaries. Key attributes include:
+
+bank_id – Primary Key
+bank_name
+bank_code
+
+### ACCOUNT
+Stores customer bank account information. Key attributes include:
+
+account_id – Primary Key
+customer_id – Foreign Key
+bank_id – Foreign Key
+account_number
+account_type
+balance
+currency
+status
+date_opened
+
+### BENEFICIARY
+Stores information about customer beneficiaries. Key attributes include:
+
+beneficiary_id – Primary Key
+customer_id – Foreign Key
+bank_id – Foreign Key
+beneficiary_name
+account_number
+nickname
+date_added
+status
+
+### FINANCIAL_TRANSACTION
+Stores financial transactions performed against customer accounts. Key attributes include:
+
+transaction_id – Primary Key
+account_id – Foreign Key
+transaction_type
+amount
+transaction_reference
+transaction_date
+description
+status
+
+### USER_ACCOUNT
+Stores information about authorized system users. Key attributes include:
+
+user_id – Primary Key
+username
+full_name
+role
+email
+status
+created_at
+
+### AUDIT_LOG
+Stores system audit activities for accountability and traceability. Key attributes include:
+
+audit_id – Primary Key
+user_id – Foreign Key
+action
+table_name
+record_id
+action_timestamp
+description
+
+## Entity Relationship
+The entities relationship is represented in the Entity Relationship Diagram (ERD) included is this portfolio. See ERD.png. The relationship is summarise bewlo:
+
+1.  A CUSTOMER can have one or more ACCOUNTS.
+2.  A BANK can be associated with multiple ACCOUNTS.
+3.  A CUSTOMER can have multiple BENEFICIARIES.
+4.  A BANK can be associated with multiple BENEFICIARIES.
+5.  An ACCOUNT can have multiple FINANCIAL_TRANSACTIONS.
+6.  A USER_ACCOUNT can generate multiple AUDIT_LOG records.
+7.  Each AUDIT_LOG record is associated with one system user.
+
+## Database Design
+Relational database model principle is adopted for the database design.
+
+### Primary Keys
+Each major entity has a unique primary key used to identify individual records.
+
+CUSTOMER: customer_id
+BANK: bank_id
+ACCOUNT: account_id
+BENEFICIARY: beneficiary_id
+FINANCIAL_TRANSACTION: transaction_id
+USER_ACCOUNT: user_id
+AUDIT_LOG: audit_id
+
+### Foreign Keys
+Foreign keys are used to establish relationships between entities and maintain referential integrity. Such as
+
+ACCOUNT.customer_id to CUSTOMER.customer_id
+ACCOUNT.bank_id  to BANK.bank_id
+BENEFICIARY.customer_id to CUSTOMER.customer_id
+BENEFICIARY.bank_id to BANK.bank_id
+FINANCIAL_TRANSACTION.account_id to ACCOUNT.account_id
+AUDIT_LOG.user_id to USER_ACCOUNT.user_id
+
+## PostgreSQL Implementation
+The database is implemented using PostgreSQL. The implementation follows:
+
+Database creation
+Table creation
+Primary key constraints
+Foreign key constraints
+Data type definitions
+Integrity constraints
+Sample data insertion
+SQL queries
+Database testing
+
+## SQL Scripts
+The SQL scripts used to implement the database is tsored in the sql directory. 
+
+sql/
+├── createtables.sql
+├── insert.sql
+└── testing.sql
+
+## Entity Relationship Diagram (ERD)
+The (ERD) provides a visual representation of the KiloPay database structure. The ERD shows:
+
+1.  Entities
+2.  Relationships
+3.  Attributes
+4.  Primary keys
+5.  Foreign keys
+
+The ERD is stored as ERD.png
+
+## Screenshots
+Screenshots are provided as evidence of the database implementation and testing process. The screenshots include the the followings:
+
+1. pg4Admin for PostgreSQL database creation
+2. Table creation
+3. Data insertion
+4. Testing
+
+The screenshots are stored in screenshots repository: screenshots
+
+## Technologies and Tools
+The following technologies and tools are used for this portfolio:
+
+1. PostgreSQL – Relational database management system
+2. SQL – Database definition, manipulation, and querying
+3. Git and GitHub – Version control and portfolio documentation
+4. ERD Tool – Entity Relationship Diagram development
+5. macOS Terminal 
+6. PostgreSQL Query tool

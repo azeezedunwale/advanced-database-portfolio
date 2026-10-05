@@ -1,0 +1,18 @@
+# Normalisation
+KiloPay Ltd is normalize to ensure that data is organised in a well structured and defined tables to avoid duplications, enhance data consistency, and improve data integrity. 
+The database design follows the following normalisation principles:
+## First Normal Form (1NF)
+1. Each table has a primary key..
+2. Each column contains a single atomic values. 
+3. Each record can be uniquely identified.
+4. There are no repeating groups.
+
+## Second Normal Form (2NF)
+1. The database satisfies 1NF.
+2. Ensure that every non-key attribute depends on the whole primary key and not part of it.
+3. Entities have been separated according to their responsibilities.
+
+## Third Normal Form (3NF)
+1. The database satisfies 2NF.
+2. Non-key attributes depend on the primary key and do not depend on other non-key attributes.
+

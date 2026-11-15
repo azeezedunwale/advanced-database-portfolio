@@ -1,0 +1,24 @@
+##Portfolio 2: Query Processing and Optimisation
+
+##1. Introduction
+Portfolio 2 builds on the KiloPay financial transaction database design and implemented in PostgreSQL in Portfolio 1. The objective is to show SQL queries, query results, execution plan, indexing and optimisation evidence, and brief performance analysis showing before and after optimisation.
+
+##2. Baseline Query Processing
+Before optimisation indexes, baseline SQL queries were developed to retrieve information from customer, account, bank and financial transaction tables. The queries considered filtering, joins, aggregation, grouping and ordering. The PostgreSQL's EXPLAIN ANALYZE command was introduced to analyse the execution plans and obtain actual execution information.
+
+##3. Performance Test Dataset
+Additional 250,000 transactions were generated to build a larger test dataset for the financial_transaction table to provide a meaningful environment for performance testing. The generation of larger dataset was needed in order to show the effect of indexing and query optimisation on realistic transaction volume.
+
+##4. Index Optimisation
+Financial Transaction: An index was created on financial_transaction using account_id to support queries that retrieve transactions belonging to a particular account.
+Composite Index: A composite index on account_id and transaction_date was also created and tested for queries that filter transactions by account and date.
+EXPLAIN ANALYZE: EXPLAIN ANALYZE was used to test the queries before and after indexing paying attention to execution plans, scan methods and execution times.
+
+##5. Performance Analysis
+The actual PostgreSQL execution-plan output was used as the basis of comparism while giving particular attention to scan type, estimated cost, actual rows, planning time and execution time. These results were used to determine the efficiency of the index optimisation strategy.
+ 
+##6. Conclusion
+The evidence of this exercise revealed that in implementing query optimisastion, it is much more important to consider the suitability of indexing on the basis of the query workload, data distribution and execution plan selected by PostgreSQL's cost-based optimiser.
+
+On KiloPay database, indexes was on frequently accessed columns and query patterns, where the execution-plan evidence supports their use.
+
